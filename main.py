@@ -3,6 +3,7 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pandas as pd
+import pickle
 
 iris = load_iris()
 X = iris.data
@@ -17,3 +18,6 @@ model.fit(X_train, y_train)
 predicted = model.predict(X_test)
 
 print(accuracy_score(predicted, y_test))
+
+with open('./rf.pkl', 'wb') as model_pkl:
+    pickle.dump(model, model_pkl)
